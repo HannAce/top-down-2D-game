@@ -38,6 +38,8 @@ public class MapTransition : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireCube(m_mapBoundary.bounds.center, m_mapBoundary.bounds.size);
         Gizmos.color = Color.red;
         Gizmos.DrawCube(m_wayPointCollider.bounds.center, m_wayPointCollider.bounds.size);
         Gizmos.color = Color.cyan;
