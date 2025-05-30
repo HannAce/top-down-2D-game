@@ -4,4 +4,5 @@ using UnityEngine;
 public class SaveData
 {
     public Vector3 PlayerPos;
+    public int LastMapTransitionIndex;
 }

@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    [SerializeField] private GameObject m_inventoryPanel;
     [SerializeField] private GameObject m_slotPrefab;
     [SerializeField] private GameObject[] m_itemPrefabs;
-    [SerializeField] private GameObject m_inventoryPanel;
     [SerializeField] private int m_slotCount;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
