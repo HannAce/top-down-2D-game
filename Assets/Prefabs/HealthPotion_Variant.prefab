@@ -10,12 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7277808388984198119, guid: 5dcd5f136c5e836409345642e5c54129, type: 3}
       propertyPath: m_Name
-      value: Potion Variant
+      value: HealthPotion_Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7575745421144925600, guid: 5dcd5f136c5e836409345642e5c54129, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 426852159, guid: d4065e18fd9ff514fa92beef3fbb4ce3, type: 3}
+      objectReference: {fileID: -980835128, guid: d4065e18fd9ff514fa92beef3fbb4ce3, type: 3}
     - target: {fileID: 8380217342966279523, guid: 5dcd5f136c5e836409345642e5c54129, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -94,6 +94,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8380217342966279523, guid: 5dcd5f136c5e836409345642e5c54129, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408682279556460133, guid: 5dcd5f136c5e836409345642e5c54129, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -980835128, guid: d4065e18fd9ff514fa92beef3fbb4ce3, type: 3}
+    - target: {fileID: 8408682279556460133, guid: 5dcd5f136c5e836409345642e5c54129, type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
