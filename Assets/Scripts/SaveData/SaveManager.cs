@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using System.IO;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class SaveManager : MonoBehaviourSingleton<SaveManager>
 {
     [SerializeField] private List<MapTransition> m_mapTransitions = new();
+
+    [SerializeField] private InventoryManager m_inventoryManager;
     private MapTransition m_lastMapTransition;
     private string m_saveLocation;
     
@@ -28,7 +31,9 @@ public class SaveManager : MonoBehaviourSingleton<SaveManager>
         SaveData saveData = new SaveData()
         {
             PlayerPos = GameObject.FindGameObjectWithTag("Player").transform.position,
+            MapBoundary = FindFirstObjectByType<CinemachineConfiner2D>().BoundingShape2D.gameObject.name,
             LastMapTransitionIndex = lastMapTransitionIndex,
+            InventorySaveData = m_inventoryManager.SaveInventoryItems(),
         };
         
         File.WriteAllText(m_saveLocation, JsonUtility.ToJson(saveData));
@@ -42,17 +47,20 @@ public class SaveManager : MonoBehaviourSingleton<SaveManager>
             SaveData saveData = JsonUtility.FromJson<SaveData>(File.ReadAllText(m_saveLocation));
 
             // Check if player has gone through transition already before saving
-            if (saveData.LastMapTransitionIndex >= 0)
+            //if (saveData.LastMapTransitionIndex >= 0)
             {
                 // Retrieving the index of my map index the player was in when they saved and storing it
-                m_lastMapTransition = m_mapTransitions[saveData.LastMapTransitionIndex];
+                //m_lastMapTransition = m_mapTransitions[saveData.LastMapTransitionIndex];
                 // Setting the map boundary to the stored index one so the camera loads in the same area
-                m_lastMapTransition.SetMapBoundary();
+                //m_lastMapTransition.SetMapBoundary();
             }
 
             // TODO swap player to singleton
             // setting player position to where they were when they saved
             GameObject.FindGameObjectWithTag("Player").transform.position = saveData.PlayerPos;
+            
+            // Load Inventory
+            m_inventoryManager.LoadInventoryItems(saveData.InventorySaveData);
         }
         else
         {

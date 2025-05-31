@@ -26,7 +26,7 @@ public class ItemDictionary : MonoBehaviour
         }
     }
 
-    private GameObject GetItemPrefab(int itemID)
+    public GameObject GetItemPrefab(int itemID)
     {
         m_itemDictionary.TryGetValue(itemID, out GameObject itemPrefab);
         if (itemPrefab == null)
