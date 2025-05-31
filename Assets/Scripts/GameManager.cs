@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class GameManager : MonoBehaviourSingleton<GameManager>
+public class SaveManager : MonoBehaviourSingleton<SaveManager>
 {
     [SerializeField] private List<MapTransition> m_mapTransitions = new();
     private MapTransition m_lastMapTransition;
@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     public void SaveGame()
     {
+        // Gets the index of the last map transition to save
         int lastMapTransitionIndex = m_mapTransitions.IndexOf(m_lastMapTransition);
         if (lastMapTransitionIndex < 0)
         {

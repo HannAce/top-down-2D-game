@@ -9,23 +9,31 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        m_originalParent = transform.parent; // save OG parent
-        transform.SetParent(transform.root); // Above other canvas'
+        // save OG parent
+        m_originalParent = transform.parent;
+        // Above other canvas'
+        transform.SetParent(transform.root); 
+        // block raycast, cannot click on other items while dragging
         m_canvasGroup.blocksRaycasts = false;
-        m_canvasGroup.alpha = 0.6f; // Make semi-transparent during drag
+        // Make semi-transparent during drag
+        m_canvasGroup.alpha = 0.6f;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = eventData.position; // follow mouse
+        // follow mouse
+        transform.position = eventData.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        m_canvasGroup.blocksRaycasts = true; // enable raycast, can click on again
-        m_canvasGroup.alpha = 1f; // no longer transparent
+        // enable raycast, can click on again
+        m_canvasGroup.blocksRaycasts = true;
+        // no longer transparent
+        m_canvasGroup.alpha = 1f;
         
-        Slot dropSlot = eventData.pointerEnter?.GetComponent<Slot>(); // Slot where item dropped
+        // Slot where item dropped
+        Slot dropSlot = eventData.pointerEnter?.GetComponent<Slot>();
         if (dropSlot == null)
         {
             GameObject dropItem = eventData.pointerEnter;
@@ -40,7 +48,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         {
             if (dropSlot.m_currentItem != null)
             {
-                // dropSlot has an item, swap item
+                // if slot has an item, swap item
                 dropSlot.m_currentItem.transform.SetParent(originalSlot.transform);
                 originalSlot.m_currentItem = dropSlot.m_currentItem;
                 dropSlot.m_currentItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
@@ -56,7 +64,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         }
         else
         {
-            // No slot under drop point
+            // No slot under drop point, return to original slot
             transform.SetParent(m_originalParent);
         }
         

@@ -19,7 +19,7 @@ public class MapTransition : MonoBehaviour
     //[SerializeField] private Direction m_direction;
     //[SerializeField] private float m_additivePos;
     
-    private GameManager m_gameManager;
+    private SaveManager m_saveManager;
     private CinemachineConfiner2D m_confiner;
 
     private void Awake()
@@ -29,7 +29,7 @@ public class MapTransition : MonoBehaviour
 
     private void Start()
     {
-        m_gameManager = GameManager.Instance;
+        m_saveManager = SaveManager.Instance;
     }
 
     /// <summary>
@@ -42,7 +42,7 @@ public class MapTransition : MonoBehaviour
         {
             Debug.Log($"Moving to map area {m_mapBoundary}");
             SetMapBoundary();
-            m_gameManager.UpdateMapTransition(this); // gets this map transition (which instance this script is attached to)
+            m_saveManager.UpdateMapTransition(this); // gets this map transition (which instance this script is attached to)
             UpdatePlayerPos(other.gameObject);
         }
     }
