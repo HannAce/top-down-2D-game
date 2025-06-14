@@ -15,14 +15,14 @@ public class ItemDictionary : MonoBehaviour
             if (ItemPrefabs[i] != null)
             {
                 // First item in list has ID of 1, then each item goes up by 1
-                ItemPrefabs[i].m_itemID = i + 1;
+                ItemPrefabs[i].ItemID = i + 1;
             }
         }
 
         // each item in list is assigned ID as key, which is equal to that item
         foreach (Item item in ItemPrefabs)
         {
-            m_itemDictionary[item.m_itemID] = item.gameObject;
+            m_itemDictionary[item.ItemID] = item.gameObject;
         }
     }
 

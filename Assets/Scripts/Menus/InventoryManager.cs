@@ -40,7 +40,7 @@ public class InventoryManager : MonoBehaviour
                 Item item = slot.m_currentItem.GetComponent<Item>();
                 inventoryData.Add(new InventorySaveData
                 {
-                    ItemID = item.m_itemID,
+                    ItemID = item.ItemID,
                     SlotIndex = slotTransform.GetSiblingIndex()
                 });
             }

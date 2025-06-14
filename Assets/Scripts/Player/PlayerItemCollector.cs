@@ -17,6 +17,7 @@ public class PlayerItemCollector : MonoBehaviour
 
                 if (itemAdded)
                 {
+                    item.Pickup();
                     Destroy(other.gameObject);
                     Debug.Log("Item collected");
                 }

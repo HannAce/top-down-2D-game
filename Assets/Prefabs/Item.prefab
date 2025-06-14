@@ -62,7 +62,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd4ac9421ba2c94d8577bf5fe448bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_itemID: 1
+  ItemID: 0
+  ItemName: Potion
 --- !u!114 &-1185778385845598255
 MonoBehaviour:
   m_ObjectHideFlags: 0
